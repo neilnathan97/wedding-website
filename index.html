@@ -694,7 +694,15 @@ HTML
                 height: 200px; /* Slightly shorter height on small screens to conserve space */
             }
         }
-    </style>
+   /* ✨ Smooth Lightbox Animation */
+        #lightbox {
+            animation: fadeIn 0.25s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+   </style>
 </head>
 <body>
 
@@ -1021,6 +1029,26 @@ HTML
         
         // Run on load initialization
         toggleConditionalFields(true);
+    </script>
+<div id="lightbox" onclick="this.style.display='none'" style="display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(30, 54, 34, 0.95); cursor: zoom-out; justify-content: center; align-items: center; padding: 2rem;">
+        <img id="lightbox-img" src="" alt="Enlarged view" style="max-width: 95%; max-height: 90vh; border-radius: 6px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain;">
+        <div style="position: absolute; top: 20px; right: 25px; color: #f4f1ea; font-size: 2rem; font-family: sans-serif; font-weight: 300;">&times;</div>
+    </div>
+    <script>
+        // Find all images inside the gallery wall and venue grid
+        const clickableImages = document.querySelectorAll('.gallery-photo-item img, .venue-photo-item img, .hero-image-container img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        clickableImages.forEach(img => {
+            // Make the cursor turn into a magnifying glass when hovering
+            img.style.cursor = 'zoom-in';
+            
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src; // Pass the clicked image source to the pop-up
+                lightbox.style.display = 'flex'; // Reveal the pop-up container
+            });
+        });
     </script>
 </body>
 </html>
