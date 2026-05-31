@@ -1,0 +1,805 @@
+HTML 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neil & Sadie's Wedding | Lost in the Moss</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+    <style>
+     /* 🌀 Loading Your Local Super Woobly Font File */
+        @font-face {
+            font-family: 'Super Woobly';
+            src: url('SuperWoobly-8MJlz.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        :root {
+            --deep-forest: #1e3622;
+            --moss-green: #4a6b4e;
+            --sage: #7d9074;
+            --earth-cream: #f4f1ea;
+            --pale-moss: #e6ebd9;
+            --charcoal: #2d312e;
+            --gold-accent: #c49a45;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        
+        }
+
+   body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--deep-forest); 
+            color: var(--charcoal);
+            line-height: 1.6;
+            position: relative; /* Essential to anchor our side columns */
+            overflow-x: hidden; /* Prevents any accidental side-scrolling on mobile devices */
+        }
+
+        /* 🌿 Left Margin Moss Pillar */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: calc((100vw - 900px) / 2); /* Automatically scales to fill the left margin perfectly */
+            height: 100vh;
+            z-index: 1; /* Sits cleanly between the background and header navigation */
+            
+            /* Background Properties to pull your Dreamstime Image URL */
+            background-image: url('twoshroomsmoss.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat-y; /* Forces the image to seamlessly loop vertically down the page */
+            pointer-events: none; /* Allows users to click elements near the screen edge safely */
+        }
+
+        /* 🌿 Right Margin Moss Pillar */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: calc((100vw - 900px) / 2); /* Automatically scales to fill the right margin perfectly */
+            height: 100vh;
+            z-index: 1;
+            
+            background-image: url('twoshroomsmoss.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat-y;
+            pointer-events: none;
+            transform: scaleX(-1);
+        }
+
+        h1, h2, h3, .serif-text {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--deep-forest);
+            font-weight: 600;
+        }
+
+        /* Navigation Header */
+        header {
+            background-color: rgba(30, 54, 34, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: var(--earth-cream);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--earth-cream);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--sage);
+        }
+
+        /* Hero / Home Section */
+        #home {
+            padding-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(244, 241, 234, 0.85), rgba(244, 241, 234, 0.85)), 
+                        url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            padding: 4rem 2rem;
+        }
+
+        
+         .hero-image-container {
+            width: 100%;
+            max-width: 650px;       /* Controls how wide the rectangle gets */
+            height: 500px;          /* Controls the height of the rectangle */
+            border-radius: 8px;     /* Gives a subtle, clean edge instead of a circle */
+            overflow: hidden;
+            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
+            
+            /* High-end "Lost in the Moss" frame effect */
+            border: 6px solid var(--deep-forest); 
+            outline: 1px solid var(--sage);
+            outline-offset: -12px;  /* Creates an elegant inset border ring inside the frame */
+            box-shadow: 0 15px 35px rgba(30, 54, 34, 0.15);
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;      /* Crops your photo perfectly to fill the rectangle */
+            object-position: 50% 83%;
+        }
+
+        #home h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .wedding-details {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: var(--moss-green);
+            font-style: italic;
+        }
+
+        .venue-detail {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+            font-weight: 400;
+        }
+
+        /* Generic Section Styling */
+        section {
+            padding: 2rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--earth-cream); 
+            border-left: 1px solid var(--sage);
+            border-right: 1px solid var(--sage);
+            position: relative;
+            z-index: 2; /* Ensures text and forms float cleanly above the margin textures */
+        }
+
+        section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '🌿';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+        }
+
+        .section-desc {
+            text-align: center;
+            max-width: 700px;
+            margin: 2rem auto;
+            font-size: 1.1rem;
+            color: var(--charcoal);
+        }
+
+        /* RSVP Form Styling */
+/* 📋 Google Form Integration Styles */
+        .google-form-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 6px;
+            /* Optional subtle accent frame to match your aesthetic */
+            border: 1px solid var(--sage); 
+            background-color: #ffffff; /* Gives the form a clean canvas */
+            margin-top: 2rem;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .google-form-container iframe {
+            display: block;
+            width: 100%;
+            /* 800px is usually perfect for RSVP questions, 
+               but you can increase this number if your form has a ton of questions! */
+            height: 850px; 
+        }
+
+        /* Smooth adjustments for mobile browsers */
+        @media (max-width: 600px) {
+            .google-form-container iframe {
+                height: 1050px; /* Gives extra vertical breathing room for long text fields on small screens */
+            }
+        }
+
+
+
+        /* Map Section Container */
+        .map-container {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 6px;
+            border: 2px dashed var(--sage);
+            margin: 1rem auto;
+            background-color: var(--pale-moss);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+
+        /* Registry Styling */
+        .registry-card {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            border-bottom: 5px solid var(--gold-accent);
+        }
+
+        .registry-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .fund-button {
+            display: inline-block;
+            margin-top: 2rem;
+            background-color: var(--moss-green);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .fund-button:hover {
+            background-color: var(--deep-forest);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--deep-forest);
+            color: var(--earth-cream);
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Settings Menu for Mobile */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            #home h1 {
+                font-size: 2.8rem;
+            }
+            .form-container, .registry-card {
+                padding: 1.5rem;
+            }
+        }
+       /* 🌀 Sleek & Stylish "Super Woobly" Subtitle Styling */
+        .groovy-text {
+            font-family: 'Super Woobly', sans-serif !important;
+            font-size: 1.8rem !important;        /* Drastically smaller for a clean, understated look */
+            font-weight: normal !important;      /* Strips any forced bolding */
+            color: var(--deep-forest) !important;
+            letter-spacing: 4.5px;
+            line-height: 1.2;
+            margin-top: 0.8rem !important;
+            margin-bottom: 1rem !important;
+            display: inline-block;
+            
+            /* Removed the 3D look—replaced with a very faint, soft blur shadow for legibility */
+            text-shadow: 1px 1px 2px rgba(30, 54, 34, 0.15);
+
+            /* Removed the aggressive tilt so it sits flat, clean, and elegant */
+            transform: none !important; 
+        }
+
+        /* Mobile adjustment so the melting font doesn't overflow phone screens */
+        @media (max-width: 900px) {
+            .groovy-text {
+                font-size: 2.2rem !important;
+                transform: rotate(-1deg) !important;
+            }
+        }
+        }
+   /* 🌿 Organic Photo Wall Collage */
+        #gallery {
+            width: 100%;
+            max-width: 1200px; 
+            margin: 0 auto;
+            padding: 3.5rem 1.5rem !important;
+        }
+
+        /* Creates an organic multi-column wall layout */
+        .gallery-wall {
+            column-count: 3;       /* 3 columns on desktop */
+            column-gap: 1.5rem;    /* Balanced space between columns */
+            margin-top: 2.5rem;
+            width: 100%;
+        }
+
+        /* Individual Photo Containers */
+        .gallery-photo-item {
+            display: inline-block; /* Crucial for masonry flow */
+            width: 100%;
+            margin-bottom: 1.5rem;  /* Space below each image */
+            border-radius: 4px;     /* Subtle soft corner, no heavy borders */
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(30, 54, 34, 0.05); /* Very soft shadow */
+            transition: transform 0.3s ease;
+        }
+
+        /* Clean, border-free images that keep their natural shapes */
+        .gallery-photo-item img {
+            display: block;
+            width: 100%;
+            height: auto; /* Lets the photo dictate its natural organic height */
+            object-fit: contain; 
+        }
+
+        /* Soft organic hover effect */
+        .gallery-photo-item:hover {
+            transform: scale(1.02);
+        }
+
+        /* 📱 Mobile Formatting: Shifts to 2 columns so it stays beautiful and readable on phones */
+        @media (max-width: 768px) {
+            .gallery-wall {
+                column-count: 2;
+                column-gap: 1rem;
+            }
+            .gallery-photo-item {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-wall {
+                column-count: 1; /* Stacks seamlessly on tiny screens */
+            }
+        }
+
+        /* 📱 Responsive Mobile Swipe Feature */
+        @media (max-width: 768px) {
+            .gallery-row {
+                overflow-x: auto; /* Allows horizontal swiping */
+                scroll-snap-type: x mandatory; /* Makes the swiping feel snappy and premium */
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-bottom: 1rem; /* Hidden space for clean scroll mechanics */
+                
+                /* Hides the ugly native browser scrollbar while keeping functionality */
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .gallery-row::-webkit-scrollbar {
+                display: none; 
+            }
+
+            .gallery-item {
+                flex: 0 0 75%; /* On mobile, cards take up 75% width so the next image peeks out */
+                scroll-snap-align: center;
+            }
+        }
+    
+    /* 🌲 Accommodations Layout Grid */
+        .accommodations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+            width: 100%;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* The Amenity Cards */
+        .acc-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--sage);
+            box-shadow: 0 4px 15px rgba(30, 54, 34, 0.05);
+            display: flex;
+            flex-direction: column;
+            text-align: left; /* Aligns card text nicely to the left for clean reading */
+        }
+
+        /* Image Crop Container inside Cards */
+        .acc-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px; /* Uniform height for all lodging images */
+            overflow: hidden;
+        }
+
+        .acc-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* 🏷️ Sleek Nightly Price Badge Overlay */
+        .price-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background-color: var(--deep-forest);
+            color: #ffffff;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .price-badge small {
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: var(--sage);
+        }
+
+        /* Card Text Padding */
+        .acc-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .acc-content h3 {
+            font-family: inherit; /* Keeps your chosen serif or display font family */
+            color: var(--deep-forest);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .acc-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #555555;
+            margin: 0;
+        }
+
+    /* 🌿 Wedding Details Styling */
+        .details-content-box {
+            max-width: 750px; /* Limits width to ensure perfect, comfortable reading lengths */
+            margin: 2.5rem auto 0 auto;
+            text-align: left; /* Elegant editorial left-alignment */
+            padding: 0 1rem;
+        }
+
+        /* Makes the opening paragraph stand out a bit more */
+        .details-content-box .lead-text {
+            font-size: 1.15rem;
+            line-height: 1.65;
+            color: var(--deep-forest);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .details-content-box p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #4a4a4a;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 🪵 Textured callout box for the grassroots community message */
+        .community-callout {
+            background-color: rgba(229, 233, 219, 0.4); /* Soft, organic mossy tint */
+            border-left: 3px solid var(--sage);
+            padding: 1.75rem 2rem;
+            margin-top: 2.5rem;
+            border-radius: 0 8px 8px 0;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.01);
+        }
+
+        .community-callout h3 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            color: var(--deep-forest);
+            font-size: 1.35rem;
+            letter-spacing: 0.5px;
+        }
+
+        .community-callout p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            font-style: italic; /* Gives it an intimate, personal note aesthetic */
+            color: #3d4a3e;
+        }
+
+        /* Adjusts padding slightly on mobile displays */
+        @media (max-width: 600px) {
+            .community-callout {
+                padding: 1.25rem 1.5rem;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#home" class="logo serif-text">Neil & Sadie</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#details">Wedding Details</a></li>
+                <li><a href="#map">Venue</a></li>
+                <li><a href="#accommodations">Accommodations</a></li>
+                <li><a href="#rsvp">RSVP</a></li>
+                <li><a href="#registry">Registry</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h1>Neil Nathan & Sadie Cwikiel</h1>
+        <p class="subtitle groovy-text">are getting lost in the moss</p>
+        <p class="venue-detail">and invite you to join them</p>
+        <p class="wedding-details" style="font-style: normal; font-weight: 500; margin-top: 0.5rem;">May 20 – 23, 2027</p>
+        <p class="venue-detail">Whispertree Retreat Center &bull; Anderson Valley &bull; California</p>
+               <div class="hero-image-container">
+            <img src="neilsadie_ferncanyon.jpg" alt="Neil and Sadie">
+        </div>
+    </section>
+
+  <section id="details">
+        <h2 class="serif-text">Wedding Details</h2>
+        
+        <div class="details-content-box">
+            <p class="lead-text">
+                Our dream for this wedding is to create an immersive weekend in nature, surrounded entirely by the people we love most. More than just a ceremony, we want this to be a fun, weekend-long retreat where we can all slow down, connect, and play together in the woods.
+            </p>
+            
+            <p>
+                Throughout the weekend, the property will be ours to explore. We'll fill our days with simple, soulful activities to enjoy at your own pace: guided morning yoga sessions, scenic afternoon hikes through the valley, lazy gatherings at the swimming pond, buffet-style meals, a late-night cozy tea lounge, soaking in the hot tub, storytelling around the campfire, and long nights of dancing. 
+            </p>
+            
+            <div class="community-callout">
+                <h3 class="serif-text">Participation is Key</h3>
+                <p>
+                    This will be more of a grassroots wedding. We are building this weekend from the ground up, and it is being made entirely possible through the love, help, and unique hands-on support of our close friends and family. From setting up spaces to sharing talents, this weekend will be a collective labor of love, and we are incredibly grateful to have such an amazing, caring community to help bring our vision to life. At the end of the day, spending time together is all that will matter to us!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="map">
+        <h2>About the Venue</h2>
+        <p class="section-desc">Whispertree spans across 600 pristine acres of Anderson Valley wilderness. Use their site layout map below to navigate paths between the swimming pond, the yoga yurt, campgrounds, and the sailcloth pole tent dining commons.</p>
+        <p class="section-desc">To learn more about this space, <a href="https://whispertreeretreat.com/" target="_blank" class="venue-link">visit their website.</a></p>
+        <div class="map-container">
+            <img src="sitemap.jpg" alt="Whispertree Property Map" style="width:100%; max-width:800px; height:auto; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+            
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--sage); font-style: italic;">
+                *To update this with your actual downloaded image map file, swap the source URL in the code block image tag.*
+            </p>
+        </div>
+    </section>
+
+    <!-- info on the accommodations and suggested pricing -->
+    <section id="accommodations">
+        <h2 class="serif-text">Accommodations</h2>
+        <p class="subtitle">Where to stay during our celebration weekend and suggested pricing</p>
+        
+        <div class="accommodations-grid">
+            
+            <div class="acc-card">
+                <div class="acc-image-wrapper">
+                    <img src="tollhouseimg.jpg" alt="Room On Site at Whispertree">
+                    <span class="price-badge">$120 <small>/ night / guest</small></span>
+                </div>
+                <div class="acc-content">
+                    <h3>Room On Site</h3>
+                    <p>Cozy, rustic lodge rooms located directly on the Whispertree grounds. Perfect for guests who want to stay steps away from all weekend festivities. Variable pricing depending on room.</p>
+                </div>
+            </div>
+
+            <div class="acc-card">
+                <div class="acc-image-wrapper">
+                    <img src="glampingtent.jpg" alt="Luxury Glamping">
+                    <span class="price-badge">$85 <small>/ night / guest</small></span>
+                </div>
+                <div class="acc-content">
+                    <h3>Luxury Glamping</h3>
+                    <p>Fully furnished canvas bell tents equipped with comfortable beds, heated blankets, and electricity. Shared restroom and shower facilities are a short walk away. Seamlessly blends natural beauty with resort comfort.</p>
+                </div>
+            </div>
+
+            <div class="acc-card">
+                <div class="acc-image-wrapper">
+                    <img src="hamptoninnukiah.png" alt="Offsite Hotel">
+                    <span class="price-badge">$95 <small>/ night / guest</small></span>
+                </div>
+                <div class="acc-content">
+                    <h3>Offsite Hotel</h3>
+                    <p>For those preferring classic amenities. We have arranged a block of rooms at a nearby hotel down the road in Ukiah, a town with restaurants and shopping. Shuttles may be provided on the night of the reception.</p>
+                </div>
+            </div>
+
+            <div class="acc-card">
+                <div class="acc-image-wrapper">
+                    <img src="camping.jpg" alt="Camping grounds">
+                    <span class="price-badge">$15 <small>/ night / guest</small></span>
+                </div>
+                <div class="acc-content">
+                    <h3>Camping</h3>
+                    <p>Bring your own tent and gear! Access to designated pristine campsites on the property, including shared access to restroom facilities. Enjoy Whispertree's natural beauty and stay close to the action!</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="rsvp">
+        <h2 class="serif-text">RSVP</h2>
+        <p class="subtitle">Please respond as soon as possible or by January 1, 2027 to help us arrange accommodations</p>
+        
+        <div class="google-form-container">
+            <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSefuK78g6HiFAjEuhZs5uPeYqBBFBrZPLOB9kE0id9ZQSFF7w/viewform?embedded=true" width="640" height="1586" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>" 
+                width="100%" 
+                height="800" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0">
+                Loading…
+            </iframe>
+        </div>
+    </section>
+
+    <section id="registry">
+        <h2>Registry</h2>
+        <div class="registry-card"> 
+            <p class="serif-text" style="font-size: 2rem; margin-bottom: 1rem;">The only gift we need is YOU</p>
+            <p style="max-width: 650px; margin: 0 auto; color: var(--charcoal);">
+                Because this is more of a grassroots, non-traditional wedding, we're not asking for any material gifts. Instead, your presence and willingness to lend your time, energy, and love to set up arrangements, play games, and share late-night tea with us is everything we could ever want.
+            </p>
+            <p style="margin-top: 1.5rem; max-width: 650px; margin: 1.5rem auto 0 auto; color: var(--charcoal); font-weight: 500;">
+                If you for some reason feel deeply compelled to support us with a monetary gift, we've set up a honeymoon fund to support our future scuba diving adventures across the world!
+            </p>
+            <a href="https://venmo.com/u/neil-nathan" target="_blank" class="fund-button">
+                Support our Honeymoon 
+            </a>
+        </div>
+    </section>
+    
+    
+<!-- photo gallery section -->
+<section id="gallery">
+        <h2 class="serif-text">Moments Together</h2>
+        <p class="subtitle">A few of our favorite memories</p>
+        
+        <div class="gallery-wall">
+            
+            <div class="gallery-photo-item">
+                <img src="neilsadiefuji.jpeg" alt="Memory 1">
+            </div>
+            
+            <div class="gallery-photo-item">
+                <img src="neilsadieyosemite.jpg" alt="Memory 2 (Landscape layout works great here!)">
+            </div>
+            
+            <div class="gallery-photo-item">
+                <img src="neilsadie_sbgarden.jpg" alt="Memory 3">
+            </div>
+            
+            <div class="gallery-photo-item">
+                <img src="neilsadie_iguazu.jpg" alt="Memory 4">
+            </div>
+
+            <div class="gallery-photo-item">
+                <img src="neilsadie_shibu.jpg" alt="Memory 5">
+            </div>
+
+            <div class="gallery-photo-item">
+                <img src="neilsadie_obama.jpg" alt="Memory 6">
+            </div>
+            
+            </div>
+    </section>    
+
+    <footer>
+        <p class="serif-text" style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--earth-cream);">Neil & Sadie</p>
+        <p style="opacity: 0.7; font-size: 0.8rem; letter-spacing: 1px;">MAY 21-23, 2027 &bull; BOONVILLE, CALIFORNIA</p>
+    </footer>
+
+    <script>
+        function toggleConditionalFields(shouldShow) {
+            const container = document.getElementById('conditionalFields');
+            const requiredSelect = document.getElementById('arrivalDay');
+            
+            if (shouldShow) {
+                container.style.display = 'block';
+                requiredSelect.setAttribute('required', 'true');
+            } else {
+                container.style.display = 'none';
+                requiredSelect.removeAttribute('required');
+            }
+        }
+        
+        // Run on load initialization
+        toggleConditionalFields(true);
+    </script>
+</body>
+</html>
