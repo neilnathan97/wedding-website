@@ -46,6 +46,11 @@ HTML
             line-height: 1.6;
             position: relative; /* Essential to anchor our side columns */
             overflow-x: hidden; /* Prevents any accidental side-scrolling on mobile devices */
+            background-image: radial-gradient(var(--cream) 1px, transparent 0), radial-gradient(var(--cream) 1px, transparent 0);
+            background-size: 8px 8px;
+            background-position: 0 0, 4px 4px;
+            /* OR replace your background color with a very subtle organic gradient */
+            background: linear-gradient(180deg, #F9F9F6 0%, #F4F4EE 100%);
         }
 
         /* 🌿 Left Margin Moss Pillar */
@@ -373,13 +378,15 @@ HTML
                 transform: rotate(-1deg) !important;
             }
         }
-        }
+        
    /* 🌿 Organic Photo Wall Collage */
+        /* 🌿 Organic Photo Wall Collage Restored */
         #gallery {
             width: 100%;
-            max-width: 1200px; 
+            max-width: 900px; /* 🔒 Nudges the container slightly narrower to prevent any overflow */
             margin: 0 auto;
-            padding: 3.5rem 1.5rem !important;
+            padding: 3.5rem 2rem; /* 🛡️ Matches the standard side-padding boundaries of your main sections */
+            box-sizing: border-box; /* Ensures the padding is calculated inside the width, preventing leaks */
         }
 
         /* Creates an organic multi-column wall layout */
@@ -468,15 +475,18 @@ HTML
 
         /* The Amenity Cards */
         .acc-card {
-            background-color: #ffffff;
-            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.85); /* Slightly translucent */
+            /* An irregular border radius gives it a subtle handcrafted paper feel */
+            border-radius: 20px 8px 15px 10px; 
             overflow: hidden;
             border: 1px solid var(--sage);
-            box-shadow: 0 4px 15px rgba(30, 54, 34, 0.05);
+            box-shadow: 0 4px 20px rgba(30, 54, 34, 0.03);
             display: flex;
             flex-direction: column;
-            text-align: left; /* Aligns card text nicely to the left for clean reading */
+            text-align: left;
+            backdrop-filter: blur(4px); /* Glossy/organic mix if over a background */
         }
+    
 
         /* Image Crop Container inside Cards */
         .acc-image-wrapper {
@@ -593,6 +603,40 @@ HTML
             }
         }
     
+    
+    /* 📱 fine-tuned Mobile Layout */
+        @media (max-width: 768px) {
+            
+            /* 1. Clear cushion so nothing hides under the nav menu */
+            #home {
+                padding-top: 180px !important; 
+                padding-bottom: 2rem !important;
+            }
+
+            /* 2. Proud, highly-readable names */
+            #home .hero-names {
+                font-size: 2.1rem !important; /* Made larger again */
+                line-height: 1.25 !important;
+                margin-bottom: 0.5rem !important;
+                padding: 0 1rem !important;
+            }
+
+            /* 3. Small, elegant accent text ("are getting lost in the moss") */
+            #home .subtitle groovy-text {
+                font-size: 1.1rem !important; /* Scaled down to balance beautifully */
+                margin-top: 0 !important;
+                margin-bottom: 0.5rem !important;
+                font-style: italic;
+                color: var(--deep-forest);
+            }
+
+            /* 4. "and invite you to join them" lines */
+            #home .venue-detail {
+                font-size: 0.95rem !important;
+                margin-top: 0 !important;
+            }
+        }
+    
     </style>
 </head>
 <body>
@@ -613,7 +657,7 @@ HTML
     </header>
 
     <section id="home">
-        <h1>Neil Nathan & Sadie Cwikiel</h1>
+        <h1 class="hero-names">Neil Nathan & Sadie Cwikiel</h1>
         <p class="subtitle groovy-text">are getting lost in the moss</p>
         <p class="venue-detail">and invite you to join them</p>
         <p class="wedding-details" style="font-style: normal; font-weight: 500; margin-top: 0.5rem;">May 21 – 23, 2027</p>
