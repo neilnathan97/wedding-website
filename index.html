@@ -615,7 +615,85 @@ HTML
                 margin-top: 0 !important;
             }
         }
-    
+    /* 🚗 Info Box Layouts for New Sections */
+        .info-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .info-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: var(--deep-forest);
+            border-bottom: 1px solid var(--pale-moss);
+            padding-bottom: 0.5rem;
+        }
+
+        .info-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .info-card ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: #4a4a4a;
+        }
+
+        /* Adds a matching leaf emoji bullet point naturally */
+        .info-card ul li::before {
+            content: '🌿';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.85rem;
+        }
+
+    /* 🌲 Responsive Venue Photos Layout */
+        .venue-photos-grid {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .venue-photo-item {
+            flex: 1;
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(30, 54, 34, 0.08);
+            height: 250px; /* Forces both images to be perfectly uniform in height */
+        }
+
+        .venue-photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Crops images beautifully into their frames without squishing them */
+            transition: transform 0.3s ease;
+        }
+
+        .venue-photo-item:hover img {
+            transform: scale(1.03); /* Soft zoom animation when hovered */
+        }
+
+        /* Responsive configuration for smaller phone viewports */
+        @media (max-width: 600px) {
+            .venue-photos-grid {
+                flex-direction: column; /* Stacks the pictures vertically on mobile screens */
+                gap: 1rem;
+            }
+            .venue-photo-item {
+                height: 200px; /* Slightly shorter height on small screens to conserve space */
+            }
+        }
     </style>
 </head>
 <body>
@@ -628,6 +706,7 @@ HTML
                 <li><a href="#details">Wedding Details</a></li>
                 <li><a href="#map">Venue</a></li>
                 <li><a href="#accommodations">Accommodations</a></li>
+                <li><a href="#travel">Travel</a></li>
                 <li><a href="#rsvp">RSVP</a></li>
                 <li><a href="#registry">Registry</a></li>
                 <li><a href="#gallery">Gallery</a></li>
@@ -673,10 +752,14 @@ HTML
         <p class="section-desc">To learn more about this space, <a href="https://whispertreeretreat.com/" target="_blank" class="venue-link">visit their website.</a></p>
         <div class="map-container">
             <img src="sitemap.jpg" alt="Whispertree Property Map" style="width:100%; max-width:800px; height:auto; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-            
-            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--sage); font-style: italic;">
-                *To update this with your actual downloaded image map file, swap the source URL in the code block image tag.*
-            </p>
+            <div class="venue-photos-grid">
+                <div class="venue-photo-item">
+                    <img src="swimmingpond.jpg" alt="Whispertree Venue Landscape">
+                </div>
+                <div class="venue-photo-item">
+                    <img src="yurtsproperty.jpg" alt="Whispertree Setting">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -734,6 +817,31 @@ HTML
         </div>
     </section>
 
+    <section id="travel">
+        <h2 class="serif-text">Getting to Whispertree</h2>
+        <p class="section-desc" style="margin-bottom: 1rem;">Whispertree is tucked into the scenic hills of Boonville within Anderson Valley, roughly 2.5 hours north of San Francisco.</p>
+        
+        <div class="info-columns">
+            <div class="info-card">
+                <h3 class="serif-text">✈️ Flying In</h3>
+                <p style="font-size: 0.95rem; color: #4a4a4a; margin-bottom: 1rem;">The closest major airports are:</p>
+                <ul>
+                    <li><strong>San Francisco International (SFO)</strong> &bull; ~2.5 to 3 hour drive. Offers the most flight options.</li>
+                    <li><strong>Oakland International (OAK)</strong> &bull; ~2.5 hour drive. Slightly easier traffic pulling out of the Bay.</li>
+                    <li><strong>Charles M. Schulz–Sonoma County (STS)</strong> &bull; ~1 hour drive. A smaller regional airport in Santa Rosa with direct flights via Alaska/Avelo.</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3 class="serif-text">🚗 Driving & Carpooling</h3>
+                <ul>
+                    <li><strong>Cell Service Note:</strong> Service can get spotty as you enter Anderson Valley. We highly recommend downloading offline Google Maps of Boonville/Ukiah before hitting the road!</li>
+                    <li><strong>Carpooling:</strong> Because we love a shared road trip adventure, we highly encourage grouping up with other guests. Keep an eye out for a carpool coordinator sheet closer to the date!</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <section id="rsvp">
         <h2 class="serif-text">RSVP</h2>
         <p class="section-desc" style="margin-top:0;">Please respond as soon as possible or by January 1, 2027 to help us arrange accommodations</p>
@@ -754,6 +862,54 @@ HTML
     </section>
 
     https://tally.so/r/
+
+    <section id="packing-guide">
+        <h2 class="serif-text">What to Bring & Wear</h2>
+        <div style="display: flex; flex-direction: column; gap: 3.5rem; text-align: left; max-width: 700px; margin: 0 auto;">
+            
+            <div class="info-card">
+                <h3 class="serif-text" style="font-size: 1.6rem; margin-bottom: 1rem; color: var(--deep-forest); border-bottom: 1px solid var(--pale-moss); padding-bottom: 0.5rem;">🌲 What to Wear</h3>
+                <p style="font-size: 0.95rem; color: #4a4a4a; margin-bottom: 0.75rem; line-height: 1.6;">
+                    If you know us (which you do, since you’re invited to our wedding), you know our dress code is usually tie dye and bare feet…so consider this our version of dressing up! Our official wedding theme is <strong>Lost in the Moss.</strong> 
+                </p>
+                <p style="font-size: 0.95rem; color: #4a4a4a; margin-bottom: 1.25rem; line-height: 1.6;">
+                    Channel your inner whimsical forest nymph. Think earth tones, flowy fabrics, and fun, enchanted details. Feel free to get as fancy as your forest-loving heart desires, but definitely no tuxes or formal gowns are required. Keep it festive, earthy, and comfortable!
+                </p>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #4a4a4a; line-height: 1.6;">
+                        <span style="position: absolute; left: 0; top: 2px; font-size: 0.85rem;">🌿</span>
+                        <strong>Footwear Note:</strong> The ceremony and reception will be outdoors on natural terrain. Please skip the high heels! Unless you want to go barefoot, we highly recommend flats, boots, or sandals so you can explore and dance comfortably.
+                    </li>
+                    <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #4a4a4a; line-height: 1.6;">
+                        <span style="position: absolute; left: 0; top: 2px; font-size: 0.85rem;">🌿</span>
+                        <strong>Evening Layers:</strong> The woods get chilly when the sun goes down! Bring a cozy jacket or sweater to stay warm.
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h3 class="serif-text" style="font-size: 1.6rem; margin-bottom: 1rem; color: var(--deep-forest); border-bottom: 1px solid var(--pale-moss); padding-bottom: 0.5rem;">🎒 What to Bring</h3>
+                <p style="font-size: 0.95rem; color: #4a4a4a; margin-bottom: 1.25rem; line-height: 1.6;">
+                    Get ready for a weekend spent outside in the woods! In late May, the weather is generally sunny, reaching mid-70s during the day and dropping to mid-40s at night. We recommend bringing:
+                </p>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #4a4a4a;"><span style="position: absolute; left: 0; top: 2px; font-size: 0.85rem;">🌿</span>Comfortable walking shoes</li>
+                    <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #4a4a4a;"><span style="position: absolute; left: 0; top: 2px; font-size: 0.85rem;">🌿</span>Clothes you can hike in</li>
+                    <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #4a4a4a;"><span style="position: absolute; left: 0; top: 2px; font-size: 0.85rem;">🌿</span>Small hiking backpack for water and snacks</li>
+                    <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #4a4a4a;"><span style="position: absolute; left: 0; top: 2px; font-size: 0.85rem;">🌿</span>Warm layers for the evenings (it can get pretty chilly!)</li>
+                    <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #4a4a4a;"><span style="position: absolute; left: 0; top: 2px; font-size: 0.85rem;">🌿</span>Swim suit for the pond and hot tub</li>
+                    <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #4a4a4a;"><span style="position: absolute; left: 0; top: 2px; font-size: 0.85rem;">🌿</span>Towel</li>
+                    <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #4a4a4a;"><span style="position: absolute; left: 0; top: 2px; font-size: 0.85rem;">🌿</span>Sunscreen & Sunglasses</li>
+                    <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #4a4a4a;"><span style="position: absolute; left: 0; top: 2px; font-size: 0.85rem;">🌿</span>Toiletries and medications</li>
+                    <li style="position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; font-size: 0.95rem; color: #4a4a4a;"><span style="position: absolute; left: 0; top: 2px; font-size: 0.85rem;">🌿</span>Headlamp</li>
+                </ul>
+                <p style="font-size: 0.95rem; color: var(--moss-green); font-style: italic; margin-top: 1.5rem; line-height: 1.5; padding-left: 0.75rem; border-left: 2px solid var(--sage);">
+                    ⛺ <strong>Planning to camp?</strong> Bring a tent, sleeping bag, and sleeping pad. If you want to camp but don’t have gear, we have plenty to share!
+                </p>
+            </div>
+            
+        </div>
+    </section>
 
     <section id="registry">
         <h2>Registry</h2>
