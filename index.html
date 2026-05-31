@@ -294,6 +294,15 @@ HTML
             background-color: var(--deep-forest);
             transform: translateY(-2px);
         }
+        .registry-accent-image {
+            display: block;
+            margin: 2.5rem auto 0 auto; /* Centers the image and pushes it 2.5rem below the button */
+            max-width: 350px;           /* Prevents the image from getting too large */
+            width: 100%;                /* Allows it to shrink gracefully on smaller mobile screens */
+            height: auto;               /* Keeps the picture's perfect proportions */
+            border-radius: 6px;         /* Optional: gives it a subtle rounded corner matching your other site layouts */
+            box-shadow: 0 4px 15px rgba(30, 54, 34, 0.05); /* Optional: adds a soft drop shadow */
+        }
 
         /* Footer */
         footer {
@@ -664,6 +673,10 @@ HTML
         <p class="section-desc">To learn more about this space, <a href="https://whispertreeretreat.com/" target="_blank" class="venue-link">visit their website.</a></p>
         <div class="map-container">
             <img src="sitemap.jpg" alt="Whispertree Property Map" style="width:100%; max-width:800px; height:auto; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+            
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--sage); font-style: italic;">
+                *To update this with your actual downloaded image map file, swap the source URL in the code block image tag.*
+            </p>
         </div>
     </section>
 
@@ -755,6 +768,9 @@ HTML
             <a href="https://venmo.com/u/neil-nathan" target="_blank" class="fund-button">
                 Support our Honeymoon 
             </a>
+            <img src="Neil_Sadie_diving1.JPG" alt="Registry Accent" class="registry-accent-image">
+        </div>
+    </section>
         </div>
     </section>
     
