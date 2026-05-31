@@ -236,37 +236,6 @@ HTML
             color: var(--charcoal);
         }
 
-        /* RSVP Form Styling */
-/* 📋 Google Form Integration Styles */
-        .google-form-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 6px;
-            /* Optional subtle accent frame to match your aesthetic */
-            border: 1px solid var(--sage); 
-            background-color: #ffffff; /* Gives the form a clean canvas */
-            margin-top: 2rem;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);
-        }
-
-        .google-form-container iframe {
-            display: block;
-            width: 100%;
-            /* 800px is usually perfect for RSVP questions, 
-               but you can increase this number if your form has a ton of questions! */
-            height: 850px; 
-        }
-
-        /* Smooth adjustments for mobile browsers */
-        @media (max-width: 600px) {
-            .google-form-container iframe {
-                height: 1050px; /* Gives extra vertical breathing room for long text fields on small screens */
-            }
-        }
-
-
-
         /* Map Section Container */
         .map-container {
             text-align: center;
@@ -757,20 +726,24 @@ HTML
 
     <section id="rsvp">
         <h2 class="serif-text">RSVP</h2>
-        <p class="subtitle">Please respond as soon as possible or by January 1, 2027 to help us arrange accommodations</p>
+        <p class="section-desc" style="margin-top:0;">Please respond as soon as possible or by January 1, 2027 to help us arrange accommodations</p>
         
-        <div class="google-form-container">
+        <div style="margin-top: 2rem; width: 100%;">
+            <script async src="https://tally.so/widgets/embed.js"></script>
             <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSefuK78g6HiFAjEuhZs5uPeYqBBFBrZPLOB9kE0id9ZQSFF7w/viewform?embedded=true" width="640" height="1586" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>" 
+                data-tally-src="https://tally.so/embed/ZjDvpz?hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                loading="lazy" 
                 width="100%" 
-                height="800" 
+                height="300" 
                 frameborder="0" 
                 marginheight="0" 
-                marginwidth="0">
-                Loading…
+                marginwidth="0" 
+                title="Wedding RSVP">
             </iframe>
         </div>
     </section>
+
+    https://tally.so/r/
 
     <section id="registry">
         <h2>Registry</h2>
@@ -819,19 +792,15 @@ HTML
             <div class="gallery-photo-item">
                 <img src="neilsadie_obama.jpg" alt="Memory 6">
             </div>
-            
             <div class="gallery-photo-item">
                 <img src="neilsadiekinosaki.jpg" alt="Memory 7">
             </div>
-            
             <div class="gallery-photo-item">
                 <img src="neilsadiesunsetsb.jpg" alt="Memory 8">
            </div>
-            
             <div class="gallery-photo-item">
                 <img src="neilsadiefest.jpg" alt="Memory 9">
-            </div>
-            
+            </div>  
             <div class="gallery-photo-item">
                 <img src="neilsadieredrocks.jpg" alt="Memory 10">
             </div>
